@@ -1,26 +1,23 @@
+import { all } from "axios";
 import React, { useEffect, useState } from "react";
 
 function Page1() {
   const [rerender, setRerender] = useState(false);
   const [userData, setUserData] = useState({});
-  const [accessToken, setAccessToken] = useState("");
+  const [allIssue, setAllIssue] = useState([]);
+
+  useEffect(() => {
+    getUserData();
+    getAllIssue();
+  }, [rerender]);
 
   useEffect(() => {
     const code = new URLSearchParams(window.location.search).get("code");
-    const accessToken = localStorage.getItem("accessToken");
-
-    // local storage
-    if (code && accessToken === null) {
-      getAccessToken(code);
-    } else if (code === null && accessToken === null) {
-      window.location.replace("http://localhost:5173");
-    }
-    if (accessToken) {
-      getUserData();
-    }
-    // console.log(code);
-    // console.log(localStorage.getItem("accessToken"));
-    // console.log(userData.login);
+    //console.log(code);
+    //console.log(localStorage.getItem("accessToken"));
+    getAccessToken(code);
+    getUserData();
+    getAllIssue();
   }, []);
 
   async function getAccessToken(code) {
@@ -33,7 +30,7 @@ function Page1() {
       .then((data) => {
         if (data.access_token) {
           localStorage.setItem("accessToken", data.access_token);
-          getUserData();
+          setRerender(!rerender);
         }
       });
   }
@@ -50,12 +47,48 @@ function Page1() {
       })
       .then((data) => {
         setUserData(data);
+        //console.log(data);
       });
   }
+
+  async function logout() {
+    localStorage.removeItem("accessToken");
+    window.location.replace("http://localhost:5173");
+  }
+
+  async function getAllIssue() {
+    await fetch("http://localhost:4000/getAllIssues", {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("accessToken"),
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        //console.log(data);
+        //console.log(data[0].title);
+        setAllIssue(data);
+      });
+  }
+
+  const Issues = allIssue.map((row, rowIndex) => {
+    const { title, body } = row;
+    return (
+      <div key={rowIndex}>
+        <h1>{title}</h1>
+        <p>{body}</p>
+      </div>
+    );
+  });
 
   return (
     <div>
       <h1>Nice! {userData.login}</h1>
+      <button onClick={getAllIssue}>Click me</button>
+      <h1>this is Issues</h1>
+      <div>{Issues}</div>
     </div>
   );
 }

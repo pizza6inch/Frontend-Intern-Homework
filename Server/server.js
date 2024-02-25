@@ -1,5 +1,6 @@
 var express = require("express");
 var cors = require("cors");
+var { Octokit } = require("@octokit/core");
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 var bodyParser = require("body-parser");
@@ -31,6 +32,7 @@ app.get("/getAccessToken", async function (req, res) {
     },
   })
     .then((response) => {
+      console.log(response);
       return response.json();
     })
     .then((data) => {
@@ -44,6 +46,7 @@ app.get("/getAccessToken", async function (req, res) {
 
 app.get("/getUserData", async function (req, res) {
   req.get("Authorization"); //Bearer ACCESS_TOKEN
+
   await fetch("https://api.github.com/user", {
     method: "GET",
     headers: {
@@ -59,6 +62,25 @@ app.get("/getUserData", async function (req, res) {
     });
 });
 
+app.get("/getAllIssues", async function (req, res) {
+  req.get("Authorization"); //Bearer ACCESS_TOKEN
+  //console.log(req.get("Authorization"));
+  await fetch("https://api.github.com/issues", {
+    method: "GET",
+    headers: {
+      Authorization: req.get("Authorization"), // Bearer ACCESS_TOKEN
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      //console.log(data);
+      res.json(data);
+    });
+});
+
+app.get("/getIssue", async function (req, res) {});
 app.listen(4000, () => {
   console.log("CORS Server is running on port 4000");
 });
