@@ -65,7 +65,9 @@ app.get("/getUserData", async function (req, res) {
 app.get("/getAllIssues", async function (req, res) {
   req.get("Authorization"); //Bearer ACCESS_TOKEN
   //console.log(req.get("Authorization"));
-  await fetch("https://api.github.com/issues", {
+  const params =
+    "?filter=all" + "&state=all" + "&sort=updated" + "&per_page=10" + "&page=1";
+  await fetch("https://api.github.com/issues" + params, {
     method: "GET",
     headers: {
       Authorization: req.get("Authorization"), // Bearer ACCESS_TOKEN

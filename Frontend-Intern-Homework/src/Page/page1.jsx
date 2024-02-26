@@ -1,24 +1,25 @@
 import { all } from "axios";
 import React, { useEffect, useState } from "react";
-
+import Header from "../component/Header/Header";
+import Hero from "../component/Hero/Hero";
+import Content from "../component/Content/Content";
+import Post from "../component/Post/Post";
+import "../App.css";
 function Page1() {
   const [rerender, setRerender] = useState(false);
   const [userData, setUserData] = useState({});
   const [allIssue, setAllIssue] = useState([]);
 
   useEffect(() => {
-    getUserData();
-    getAllIssue();
-  }, [rerender]);
-
-  useEffect(() => {
     const code = new URLSearchParams(window.location.search).get("code");
-    //console.log(code);
-    //console.log(localStorage.getItem("accessToken"));
-    getAccessToken(code);
-    getUserData();
-    getAllIssue();
-  }, []);
+    if (code) {
+      getAccessToken(code);
+    }
+    if (localStorage.getItem("accessToken")) {
+      getUserData();
+      getAllIssue();
+    }
+  }, [rerender]);
 
   async function getAccessToken(code) {
     await fetch("http://localhost:4000/getAccessToken?code=" + code, {
@@ -31,6 +32,7 @@ function Page1() {
         if (data.access_token) {
           localStorage.setItem("accessToken", data.access_token);
           setRerender(!rerender);
+          //console.log(data);
         }
       });
   }
@@ -51,11 +53,6 @@ function Page1() {
       });
   }
 
-  async function logout() {
-    localStorage.removeItem("accessToken");
-    window.location.replace("http://localhost:5173");
-  }
-
   async function getAllIssue() {
     await fetch("http://localhost:4000/getAllIssues", {
       method: "GET",
@@ -73,22 +70,11 @@ function Page1() {
       });
   }
 
-  const Issues = allIssue.map((row, rowIndex) => {
-    const { title, body } = row;
-    return (
-      <div key={rowIndex}>
-        <h1>{title}</h1>
-        <p>{body}</p>
-      </div>
-    );
-  });
-
   return (
-    <div>
-      <h1>Nice! {userData.login}</h1>
-      <button onClick={getAllIssue}>Click me</button>
-      <h1>this is Issues</h1>
-      <div>{Issues}</div>
+    <div className="Page1">
+      <Header name={userData.login} />
+      <Hero />
+      <Content Issues={allIssue} />
     </div>
   );
 }

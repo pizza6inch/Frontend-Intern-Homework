@@ -1,0 +1,27 @@
+.Header{
+    display: flex;
+    width: 100%;
+    height: 125px;
+    justify-content: center;
+    align-items: center;
+    /* background-color: blue; */
+}
+
+.Header .Navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 84%;
+    height: 52%;
+    /* background-color: red; */
+}
+.Header .Navbar .Text{
+    font-size: 2em;
+    font-weight: bold;
+}
+.Header .Navbar .Menu .LogOut{
+    text-decoration: underline;
+}
+
+.LogOut:hover{
+    cursor: pointer;
+}
