@@ -15,6 +15,7 @@
     height: 100%;
     background-color: #fff;
     border: #000000 10px solid;
+    border-radius: 5px;
 }
 
 .Post .Issue-wrapper{

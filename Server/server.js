@@ -62,11 +62,19 @@ app.get("/getUserData", async function (req, res) {
     });
 });
 
-app.get("/getAllIssues", async function (req, res) {
+app.get("/getIssues", async function (req, res) {
   req.get("Authorization"); //Bearer ACCESS_TOKEN
+  req.get("page");
+  //console.log(req.get("page"));
+
   //console.log(req.get("Authorization"));
   const params =
-    "?filter=all" + "&state=all" + "&sort=updated" + "&per_page=10" + "&page=1";
+    "?filter=all" +
+    "&state=all" +
+    "&sort=updated" +
+    "&per_page=10" +
+    "&page=" +
+    req.get("page");
   await fetch("https://api.github.com/issues" + params, {
     method: "GET",
     headers: {
@@ -82,7 +90,6 @@ app.get("/getAllIssues", async function (req, res) {
     });
 });
 
-app.get("/getIssue", async function (req, res) {});
 app.listen(4000, () => {
   console.log("CORS Server is running on port 4000");
 });
