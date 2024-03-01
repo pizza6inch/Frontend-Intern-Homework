@@ -63,24 +63,21 @@ app.get("/getUserData", async function (req, res) {
 });
 
 app.get("/getIssues", async function (req, res) {
-  req.get("Authorization"); //Bearer ACCESS_TOKEN
   req.get("page");
   //console.log(req.get("page"));
 
   //console.log(req.get("Authorization"));
-  const params =
-    "?filter=all" +
-    "&state=all" +
-    "&sort=updated" +
-    "&per_page=10" +
-    "&page=" +
-    req.get("page");
-  await fetch("https://api.github.com/issues" + params, {
-    method: "GET",
-    headers: {
-      Authorization: req.get("Authorization"), // Bearer ACCESS_TOKEN
-    },
-  })
+  const params = "?sort=updated" + "&per_page=10" + "&page=" + req.get("page");
+  await fetch(
+    "https://api.github.com/repos/pizza6inch/Github-Blog/issues" + params,
+    {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer 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", // Bearer ACCESS_TOKEN
+      },
+    }
+  )
     .then((response) => {
       return response.json();
     })

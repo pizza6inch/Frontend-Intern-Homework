@@ -12,3 +12,7 @@
     display: flex;
     width: 84%;
 }
+
+.Content .Post-wrapper{
+    width: 84%;
+}

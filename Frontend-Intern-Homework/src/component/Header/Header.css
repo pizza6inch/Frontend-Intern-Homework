@@ -18,10 +18,27 @@
     font-size: 2em;
     font-weight: bold;
 }
-.Header .Navbar .Menu .LogOut{
+
+.Header .Navbar .Menu{
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+    height: 100%;
+    /* background-color: green; */
+}
+
+.Header .Navbar .Menu .Log{
     text-decoration: underline;
 }
 
-.LogOut:hover{
+.Log:hover{
+    cursor: pointer;
+}
+
+.Header .Navbar .Menu .Home{
+    text-decoration: underline;
+}
+
+.Home:hover{
     cursor: pointer;
 }
