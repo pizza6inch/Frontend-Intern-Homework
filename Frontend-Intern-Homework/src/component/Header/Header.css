@@ -1,0 +1,44 @@
+.Header{
+    display: flex;
+    width: 100%;
+    height: 125px;
+    justify-content: center;
+    align-items: center;
+    /* background-color: blue; */
+}
+
+.Header .Navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 84%;
+    height: 52%;
+    /* background-color: red; */
+}
+.Header .Navbar .Text{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.Header .Navbar .Menu{
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+    height: 100%;
+    /* background-color: green; */
+}
+
+.Header .Navbar .Menu .Log{
+    text-decoration: underline;
+}
+
+.Log:hover{
+    cursor: pointer;
+}
+
+.Header .Navbar .Menu .Home{
+    text-decoration: underline;
+}
+
+.Home:hover{
+    cursor: pointer;
+}

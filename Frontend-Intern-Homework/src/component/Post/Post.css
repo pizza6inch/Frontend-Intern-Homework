@@ -1,0 +1,63 @@
+.Post-wrapper{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.Post{
+    width: 84%;
+    border-top: 1px solid #ffffff;
+}
+
+.Post .Title-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.Post .Title-wrapper .Title-Text-wrapper{
+    display: flex;
+    font-size: 4em;
+    font-weight: bold;
+}
+
+.Post .Title-wrapper .Title-Text-wrapper .Post-Title{
+    margin-right: 20px;
+}
+
+.Post .Title-wrapper .Title-Text-wrapper .Tag{
+    color: #656d76;
+
+}
+
+
+.Post .Title-wrapper .Button-wrapper{
+    display: flex;
+    align-items: start;
+}
+
+.Post .Title-wrapper .Button-wrapper .Edit-Button{
+    width: 100px;
+    height: 40px;
+    border: #ffffff 1px solid;
+    background-color: #090d1f;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 2em;
+}
+
+.Post .Title-wrapper .Button-wrapper .Add-Button{
+    width: 200px;
+    height: 40px;
+    margin-left: 20px;
+    border: #ffffff 1px solid;
+    background-color: #1f883d;
+    border-radius: 10px;
+    color: #090d1f;
+    font-size: 2em;
+}
+
+.Post .Post-Body{
+    margin-top: 20px;
+    font-size: 2em;
+}
