@@ -4,7 +4,6 @@ import Header from "../component/Header/Header";
 import Hero from "../component/Hero/Hero";
 import Content from "../component/Content/Content";
 import "../App.css";
-import MyModal from "../component/Modal/MyModal";
 function Home() {
   const [rerender, setRerender] = useState(false);
   const [userData, setUserData] = useState({});
@@ -118,7 +117,6 @@ function Home() {
       <Header name={userData.login} />
       <Hero />
       <Content Issues={Issues} lastIssueElementRef={lastIssueElementRef} />
-      <MyModal />
     </div>
   );
 }

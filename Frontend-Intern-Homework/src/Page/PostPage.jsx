@@ -3,7 +3,7 @@ import Header from "../component/Header/Header";
 import Post from "../component/Post/Post";
 import math from "math";
 function PostPage() {
-  const [Issues, setIssues] = useState([]);
+  const [Issue, setIssue] = useState(undefined);
   const [userData, setUserData] = useState([]);
   const [rerender, setRerender] = useState(false);
 
@@ -15,10 +15,10 @@ function PostPage() {
     } else {
       setUserData({ login: "Guest" });
     }
-    if (Issues.length === 0) {
+    if (Issue === undefined) {
       getIssues(page);
     }
-    //console.log(Issues);
+    //console.log(Issue);
   }, [rerender]);
 
   // console.log(page);
@@ -51,14 +51,15 @@ function PostPage() {
         return response.json();
       })
       .then((data) => {
-        setIssues(data);
-        console.log(data);
+        setIssue(data[number]);
+        setRerender(!rerender);
+        //console.log(data);
       });
   }
   return (
     <div className="PostPage">
       <Header name={userData.login} />
-      <Post issue={Issues[number]} />
+      <Post issue={Issue} setRerender={setRerender} />
       <h1>Page2</h1>
       <div>{number}</div>
     </div>

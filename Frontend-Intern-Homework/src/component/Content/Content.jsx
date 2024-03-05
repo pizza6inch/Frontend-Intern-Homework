@@ -1,7 +1,17 @@
 import PostPrev from "../PostPrev/PostPrev";
 import "./Content.css";
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useState } from "react";
+import AddModal from "../Modal/AddModal";
 function Content(props) {
+  const [IsOpen, setIsOpen] = useState(false);
+  function AddIssue() {
+    if (localStorage.getItem("accessToken") === null) {
+      alert("You need to login first");
+      return;
+    }
+    setIsOpen(true);
+  }
+
   function getContent(Issues, lastIssueElementRef) {
     if (Issues === undefined || Issues.length === 0) {
       return <div className="Content-Title">No Issue</div>;
@@ -40,7 +50,13 @@ function Content(props) {
   }
   return (
     <div className="Content" key={"Content"}>
-      <div className="Content-Title">Here is your Issues</div>
+      <div className="Title-wrapper">
+        <div className="Content-Title">Here is your Issues</div>
+        <button className="Add-Button" onClick={AddIssue}>
+          New Issue
+        </button>
+        <AddModal isOpen={IsOpen} setIsOpen={setIsOpen} />
+      </div>
       {getContent(props.Issues, props.lastIssueElementRef)}
     </div>
   );
