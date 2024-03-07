@@ -70,4 +70,10 @@ function PostPage() {
 
   return (
     <div className="PostPage">
-     
+      <Header name={userData.login} />
+      <Post issue={Issue} setRerender={setRerender} />
+    </div>
+  );
+}
+
+export default PostPage;

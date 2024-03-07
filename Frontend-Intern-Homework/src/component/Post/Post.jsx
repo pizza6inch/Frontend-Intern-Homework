@@ -1,8 +1,9 @@
 import { E } from "math"; // I'm not sure what 'E' is imported from 'math' here
 import "./Post.css";
-import EditModal from "../Modal/EditModal"; // This component is used for editing the post
 
-import { useState, useEffect } from "react"; // These hooks are used for managing state and side effects
+import EditModal from "../Modal/EditModal";
+import { marked } from "marked";
+import { useState, useEffect } from "react";
 
 function Post(props) {
   // Declaring a state variable 'modalIsOpen' to control the modal visibility
@@ -17,12 +18,20 @@ function Post(props) {
     setIsOpen(true);
   }
 
-  // Function to close the issue
-  function closeIssue() {
+
+  async function closeIssue() {
     if (localStorage.getItem("accessToken") === null) {
       alert("You need to login first");
       return;
     }
+    await fetch("http://localhost:4000/closeIssue", {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+        number: props.issue.number,
+      },
+    });
+    window.location.href = "http://localhost:5173/home";
   }
 
   // Conditional rendering while the issue is being loaded
@@ -57,10 +66,10 @@ function Post(props) {
                 </button>
               </div>
             </div>
-            {/* Displaying the issue body */}
-            <div className="Post-Body">{props.issue.body}</div>
-            {/* Displaying the comment section */}
-            <div className="Comment">Comment</div>
+            <div
+              className="Post-Body"
+              dangerouslySetInnerHTML={{ __html: marked(props.issue.body) }}
+            ></div>
           </div>
         </div>
       </>

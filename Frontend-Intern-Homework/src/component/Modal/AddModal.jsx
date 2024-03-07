@@ -25,8 +25,15 @@ function AddModal(props) {
   }
 
   async function AddIssue() {
-    console.log("AddIssue");
-    await fetch("http://localhost:4000/AddIssue", { // API call to add issue
+    if (document.querySelector(".title-input").value.length === 0) {
+      alert("Title cannot be empty");
+      return;
+    }
+    if (document.querySelector(".content-input").value.length < 30) {
+      alert("Content cannot be less than 30 characters");
+      return;
+    }
+    await fetch("http://localhost:4000/AddIssue", {
       method: "POST",
       headers: {
         Authorization: localStorage.getItem("accessToken"), // Authorization token

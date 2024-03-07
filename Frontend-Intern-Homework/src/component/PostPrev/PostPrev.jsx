@@ -1,7 +1,8 @@
 // Import the PostPrev.css file for styling
 import "./PostPrev.css";
 
-// Define the PostPrev functional component that accepts an "Issue" prop
+import { marked } from "marked";
+
 function PostPrev(Issue) {
   // Define the clickPost function that takes a number as an argument
   function clickPost(number) {
@@ -21,10 +22,13 @@ function PostPrev(Issue) {
           {/* Display the issue updated_at timestamp */}
           <div className="updated_at">updated_at: {Issue.updated_at}</div>
         </div>
-        {/* Display the issue body and attach an onClick event listener to redirect to the issue post */}
-        <div className="Text" onClick={() => clickPost(Issue.number)}>
-          {Issue.body}
-        </div>
+
+        <div
+          className="Text"
+          onClick={() => clickPost(Issue.number)}
+          dangerouslySetInnerHTML={{ __html: marked(Issue.body) }}
+        ></div>
+
       </div>
     </div>
   );
