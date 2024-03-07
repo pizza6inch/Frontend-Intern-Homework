@@ -1,6 +1,7 @@
 import { E } from "math";
 import "./Post.css";
 import EditModal from "../Modal/EditModal";
+import { marked } from "marked";
 import { useState, useEffect } from "react";
 function Post(props) {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -13,11 +14,19 @@ function Post(props) {
     setIsOpen(true);
   }
 
-  function closeIssue() {
+  async function closeIssue() {
     if (localStorage.getItem("accessToken") === null) {
       alert("You need to login first");
       return;
     }
+    await fetch("http://localhost:4000/closeIssue", {
+      method: "POST",
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+        number: props.issue.number,
+      },
+    });
+    window.location.href = "http://localhost:5173/home";
   }
   if (props.issue === undefined) {
     return <div>loading...</div>;
@@ -45,8 +54,10 @@ function Post(props) {
                 </button>
               </div>
             </div>
-            <div className="Post-Body">{props.issue.body}</div>
-            <div className="Comment">Comment</div>
+            <div
+              className="Post-Body"
+              dangerouslySetInnerHTML={{ __html: marked(props.issue.body) }}
+            ></div>
           </div>
         </div>
       </>

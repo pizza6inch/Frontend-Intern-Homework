@@ -60,8 +60,6 @@ function PostPage() {
     <div className="PostPage">
       <Header name={userData.login} />
       <Post issue={Issue} setRerender={setRerender} />
-      <h1>Page2</h1>
-      <div>{number}</div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import "./PostPrev.css";
+import { marked } from "marked";
 function PostPrev(Issue) {
   function clickPost(number) {
     window.location.href = "http://localhost:5173/post?number=" + number;
@@ -11,9 +12,11 @@ function PostPrev(Issue) {
           <div className="Title">{Issue.title}</div>
           <div className="updated_at">updated_at: {Issue.updated_at}</div>
         </div>
-        <div className="Text" onClick={() => clickPost(Issue.number)}>
-          {Issue.body}
-        </div>
+        <div
+          className="Text"
+          onClick={() => clickPost(Issue.number)}
+          dangerouslySetInnerHTML={{ __html: marked(Issue.body) }}
+        ></div>
       </div>
     </div>
   );

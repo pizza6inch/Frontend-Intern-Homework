@@ -151,9 +151,7 @@ app.post("/closeIssue", async function (req, res) {
       headers: {
         Authorization: "Bearer " + req.get("Authorization"), // Bearer ACCESS_TOKEN
       },
-      body: {
-        state: "closed",
-      },
+      body: JSON.stringify({ state: "closed" }),
     }
   )
     .then((response) => {
