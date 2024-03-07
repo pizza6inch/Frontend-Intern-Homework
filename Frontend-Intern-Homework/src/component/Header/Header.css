@@ -1,44 +1,53 @@
+/*------------------------------------
+Header Styling
+------------------------------------*/
 .Header{
+    /* This sets the display property of the .Header class to flex,
+    which allows for flexible box layout. It also sets the width and
+    height to 100% and 125px respectively, and centers the contents
+    both vertically and horizontally. */
     display: flex;
     width: 100%;
     height: 125px;
     justify-content: center;
     align-items: center;
+    /* This comments out a line of code that sets the background color
+    of the .Header class to blue. */
     /* background-color: blue; */
 }
 
+/*------------------------------------
+Navbar Styling
+------------------------------------*/
 .Header .Navbar{
+    /* This sets the display property of the .Navbar class to flex,
+    and aligns the contents horizontally with justify-content and
+    vertically with align-items. It also sets the width and height
+    to 84% and 52% respectively. */
     display: flex;
     justify-content: space-between;
     width: 84%;
     height: 52%;
+    /* This comments out a line of code that sets the background color
+    of the .Navbar class to red. */
     /* background-color: red; */
 }
+
+/*------------------------------------
+Text Styling
+------------------------------------*/
 .Header .Navbar .Text{
+    /* This sets the font size of the .Text class to 2em and the
+    font weight to bold. */
     font-size: 2em;
     font-weight: bold;
 }
 
+/*------------------------------------
+Menu Styling
+------------------------------------*/
 .Header .Navbar .Menu{
-    display: flex;
-    justify-content: space-between;
-    width: 15%;
-    height: 100%;
-    /* background-color: green; */
-}
-
-.Header .Navbar .Menu .Log{
-    text-decoration: underline;
-}
-
-.Log:hover{
-    cursor: pointer;
-}
-
-.Header .Navbar .Menu .Home{
-    text-decoration: underline;
-}
-
-.Home:hover{
-    cursor: pointer;
-}
+    /* This sets the display property of the .Menu class to flex,
+    and aligns the contents horizontally with justify-content and
+    vertically with align-items. It also sets the width and height
+    to 15% and 100
