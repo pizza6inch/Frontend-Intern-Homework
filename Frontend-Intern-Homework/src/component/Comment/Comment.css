@@ -1,0 +1,29 @@
+.Comment-wrapper{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.Comment-wrapper .Comments{
+    width: 84%;
+}
+
+
+.Comment-wrapper .Comments .Comment{
+    margin: 20px 0px;
+}
+.Comment-wrapper .Comments .Comment .Comment-User{
+    font-size: 1.5em;
+    color: #656d76;
+}
+
+.Comment-wrapper .Comments .Comment .Comment-Body{
+    margin-top: 20px;
+    font-size: 2em;
+    word-wrap:break-word;
+    background-color: #ffffff;
+    color: #090d1f;
+    border: lightblue 4px solid;
+    border-radius: 10px;
+    padding: 10px;
+}
