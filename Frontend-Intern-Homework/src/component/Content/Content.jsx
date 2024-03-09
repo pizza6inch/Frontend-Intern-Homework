@@ -20,12 +20,7 @@ function Content(props) {
         if (Issues.length === i + 1) {
           return (
             <div className="Post-wrapper" key={i}>
-              <PostPrev
-                number={i}
-                title={Issue.title}
-                updated_at={Issue.updated_at}
-                body={Issue.body}
-              ></PostPrev>
+              <PostPrev IssueNumber={i} Issue={Issue}></PostPrev>
               <div
                 className="loading..."
                 key={"loading"}
@@ -36,12 +31,7 @@ function Content(props) {
         } else {
           return (
             <div className="Post-wrapper" key={i}>
-              <PostPrev
-                number={i}
-                title={Issue.title}
-                updated_at={Issue.updated_at}
-                body={Issue.body}
-              ></PostPrev>
+              <PostPrev IssueNumber={i} Issue={Issue}></PostPrev>
             </div>
           );
         }

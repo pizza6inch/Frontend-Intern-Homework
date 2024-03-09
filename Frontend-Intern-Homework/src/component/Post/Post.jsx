@@ -4,6 +4,8 @@ import "./Post.css";
 import EditModal from "../Modal/EditModal";
 import { marked } from "marked";
 import { useState, useEffect } from "react";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 function Post(props) {
   // Declaring a state variable 'modalIsOpen' to control the modal visibility
@@ -17,7 +19,6 @@ function Post(props) {
     }
     setIsOpen(true);
   }
-
 
   async function closeIssue() {
     if (localStorage.getItem("accessToken") === null) {
@@ -66,10 +67,9 @@ function Post(props) {
                 </button>
               </div>
             </div>
-            <div
-              className="Post-Body"
-              dangerouslySetInnerHTML={{ __html: marked(props.issue.body) }}
-            ></div>
+            <div className="Post-Body">
+              <Markdown remarkPlugins={remarkGfm}>{props.issue.body}</Markdown>
+            </div>
           </div>
         </div>
       </>

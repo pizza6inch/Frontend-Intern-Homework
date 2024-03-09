@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 //code being passed from the frontend
 app.get("/getAccessToken", async function (req, res) {
-  console.log(req.query.code);
+  //console.log(req.query.code);
 
   const params =
     "?client_id=" +
@@ -34,11 +34,11 @@ app.get("/getAccessToken", async function (req, res) {
     },
   })
     .then((response) => {
-      console.log(response);
+      //console.log(response);
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      //console.log(data);
       res.json(data);
     });
 });
@@ -59,7 +59,7 @@ app.get("/getUserData", async function (req, res) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      //console.log(data);
       res.json(data);
     });
 });
@@ -70,7 +70,7 @@ app.get("/getIssues", async function (req, res) {
 
   //console.log(req.get("Authorization"));
   const params =
-    "?sort=updated" +
+    "?sort=created" +
     "&direction=asc" +
     "&per_page=10" +
     "&page=" +
@@ -89,6 +89,29 @@ app.get("/getIssues", async function (req, res) {
     })
     .then((data) => {
       //console.log(data);
+      res.json(data);
+    });
+});
+
+app.get("/getIssueComments", async function (req, res) {
+  req.get("number");
+  console.log(req.get("number"));
+  await fetch(
+    "https://api.github.com/repos/pizza6inch/Github-Blog/issues/" +
+      req.get("number") +
+      "/comments",
+    {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + BLOG_ACCESS_TOKEN, // Bearer ACCESS_TOKEN
+      },
+    }
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
       res.json(data);
     });
 });

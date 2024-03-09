@@ -26,6 +26,7 @@ Navbar Styling
     to 84% and 52% respectively. */
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 84%;
     height: 52%;
     /* This comments out a line of code that sets the background color
@@ -50,4 +51,22 @@ Menu Styling
     /* This sets the display property of the .Menu class to flex,
     and aligns the contents horizontally with justify-content and
     vertically with align-items. It also sets the width and height
-    to 15% and 100
+    to 15% and 100*/
+    font-size: 1.5em;
+    text-decoration: underline;
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+}
+
+.Header .Navbar .Menu .Home:hover{
+    color: blue;
+    text-decoration: underline blue;
+    cursor: pointer;
+}
+
+.Header .Navbar .Menu .Log:hover{
+    color: blue;
+    text-decoration: underline blue;
+    cursor: pointer;
+}
