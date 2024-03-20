@@ -1,44 +1,39 @@
-/*
----------------------------------
-Hero Styles
----------------------------------
-*/
+
 
 .Hero {
-  /* Sets the width of the hero section to 100% of the viewport */
+  
   width: 100%;
 
-  /* Sets the height of the hero section to 355px */
+  
   height: 355px;
 
-  /* Centers the content of the hero section */
+ 
   display: flex;
   justify-content: center;
 
-  /* Adds a red background color to the hero section (currently commented out) */
-  /* background-color: #dd2b2b; */
+  
 }
 
 .Hero .Text {
-  /* Centers the text content of the hero section */
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  /* Sets the height of the text content to 100% of the hero section */
+  
   height: 100%;
 
-  /* Sets the font size of the text content to 10em */
+  
   font-size: 10em;
 
-  /* Adds a bold font weight to the text content */
+  
   font-weight: bold;
 
-  /* Adds a white border to the top and bottom of the text content */
+  
   border-top: 1px solid #ffffff;
   border-bottom: 1px solid #ffffff;
 
-  /* Sets the width of the text content to 84% of the hero section */
+  
   width: 84%;
 }

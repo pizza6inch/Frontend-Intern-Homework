@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // Use the <React.StrictMode> component to enable additional checks and warnings for your application
   // (Note: This is optional and can be removed if not needed)
-  // <React.StrictMode>
+  <React.StrictMode>
     <App />
-  // </React.StrictMode>
+  </React.StrictMode>
 );

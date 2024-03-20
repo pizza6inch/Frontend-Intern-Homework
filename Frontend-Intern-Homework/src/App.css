@@ -1,19 +1,17 @@
-/* This code sets the styles for the entire body element of an HTML document. */
 body {
-  /* The border property is set to none to remove any default borders. */
   border: none;
-  /* The background-color property sets the background color of the body element. */
-  background-color: #090d1f; /* This sets the background color to a dark shade of blue-grey. */
-  /* The color property sets the text color of the body element. */
-  color: #ffffff; /* This sets the text color to white. */
-  /* The list-style property is set to none to remove any default bullet points. */
+
+  background-color: #090d1f; 
+
+  color: #ffffff; 
+
   list-style: none;
-  /* The padding property sets the space between the content and the border. */
-  padding: 0; /* This removes any default padding. */
-  /* The margin property sets the space between the element and its surrounding elements. */
-  margin: 0; /* This removes any default margins. */
-  /* The text-decoration property is set to none to remove any default underlines. */
+
+  padding: 0; 
+
+  margin: 0; 
+
   text-decoration: none;
-  /* The font-family property sets the font used for the text. */
-  font-family: Arial, sans-serif; /* This sets the font to Arial or a sans-serif font if Arial is not available. */
+ 
+  font-family: Arial, sans-serif; 
 }
