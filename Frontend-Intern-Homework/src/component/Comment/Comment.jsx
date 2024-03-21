@@ -17,8 +17,11 @@ function Comment(props) {
           {props.comments.map((comment, i) => {
             return (
               <div className="Comment" key={i}>
-                <div className="Comment-User">
-                  {comment.user.login} commented at {comment.updated_at}
+                <div className="Comment-Title">
+                  <div className="Comment-User">
+                    {comment.user.login} commented at
+                  </div>
+                  <div className="Comment-Time">{comment.updated_at}</div>
                 </div>
                 <div className="Comment-Body">
                   <Markdown remarkPlugins={remarkGfm}>{mark}</Markdown>

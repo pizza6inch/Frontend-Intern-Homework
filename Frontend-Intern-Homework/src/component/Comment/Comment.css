@@ -12,9 +12,19 @@
 .Comment-wrapper .Comments .Comment{
     margin: 20px 0px;
 }
-.Comment-wrapper .Comments .Comment .Comment-User{
+
+.Comment-wrapper .Comments .Comment .Comment-Title{
+    display: flex;
     font-size: 1.5em;
+}
+
+.Comment-wrapper .Comments .Comment .Comment-User{
     color: #656d76;
+}
+
+.Comment-wrapper .Comments .Comment .Comment-Time{
+    color :#6941c6;
+    margin-left: 10px;
 }
 
 .Comment-wrapper .Comments .Comment .Comment-Body{

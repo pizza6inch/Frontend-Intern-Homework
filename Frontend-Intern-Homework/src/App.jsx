@@ -1,4 +1,4 @@
-import OAuth from "./Page/OAuth";
+import LoginPage from "./Page/LoginPage";
 import Home from "./Page/Home";
 import PostPage from "./Page/PostPage";
 import ReactDOM from "react-dom";
@@ -8,7 +8,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<OAuth />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/post" element={<PostPage />} />
         </Routes>

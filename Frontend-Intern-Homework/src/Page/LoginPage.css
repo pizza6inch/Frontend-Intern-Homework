@@ -1,0 +1,74 @@
+.LoginPage{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.LoginPage .Content{
+    display: flex;
+    flex-direction: row;
+    width: 86%;
+    padding : 40px 0px;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.Content .LeftBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    font-size: 8em;    
+    font-weight: bold;
+}
+
+.LeftBox .Top-Text{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.LeftBox .Bottom-Text{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+}
+
+
+.Content .RightBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+.RightBox .Text{
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.RightBox button {
+    display: flex;
+    background-color: white;
+    color: black;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 2em;
+    width: 250px;
+    height:100px ;
+    align-items: center;
+    justify-content: center;
+}
+  
+.RightBox button:hover {
+    opacity: 0.8;
+}
+
+button img{
+    width: 50px;
+    height: 50px;
+}
