@@ -2,6 +2,7 @@ import axios from "axios";
 import Hero from "../component/Hero/Hero";
 import Header from "../component/Header/Header";
 import "./LoginPage.css";
+import Icon from "../../public/github-mark.png";
 function LoginPage() {
   function redirectToOAuth() {
     const clientId = "722ee22b46b4dbd64348";
@@ -15,7 +16,7 @@ function LoginPage() {
     <div className="LoginPage">
       <Header name="Guest" />
       <div className="Content">
-        <div className="Text">
+        <div className="LeftBox">
           <div className="Top-Text">
             <div className="span">G</div>
             <div className="span">I</div>
@@ -31,7 +32,12 @@ function LoginPage() {
             <div className="span">G</div>
           </div>
         </div>
-        <button onClick={redirectToOAuth}>Login with Github</button>
+        <div className="RightBox">
+          <div className="Text">login with Github</div>
+          <button onClick={redirectToOAuth}>
+            <img src={Icon} alt="Github-Icon" />
+          </button>
+        </div>
       </div>
     </div>
   );
