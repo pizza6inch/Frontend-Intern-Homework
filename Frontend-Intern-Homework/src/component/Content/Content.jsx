@@ -1,7 +1,6 @@
 import PostPrev from "../PostPrev/PostPrev";
 import "./Content.css";
 import { useRef, useCallback, useState } from "react";
-import AddModal from "../Modal/AddModal";
 function Content(props) {
   const [IsOpen, setIsOpen] = useState(false);
   function AddIssue() {
@@ -9,7 +8,8 @@ function Content(props) {
       alert("You need to login first");
       return;
     }
-    setIsOpen(true);
+    //setIsOpen(true);
+    window.location.href = "/newIssue";
   }
 
   function getContent(Issues, lastIssueElementRef) {
@@ -40,12 +40,11 @@ function Content(props) {
   }
   return (
     <div className="Content" key={"Content"}>
-      <div className="Title-wrapper">
+      <div className="ContentTitle-wrapper">
         <div className="Content-Title">Here is your Issues</div>
         <button className="Add-Button" onClick={AddIssue}>
           New Issue
         </button>
-        <AddModal isOpen={IsOpen} setIsOpen={setIsOpen} />
       </div>
       {getContent(props.Issues, props.lastIssueElementRef)}
     </div>

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { marked } from "marked";
-import modal from "react-modal";
 import Header from "../component/Header/Header";
 import Hero from "../component/Hero/Hero";
 import Content from "../component/Content/Content";
@@ -114,34 +113,11 @@ function Home() {
     [loading]
   );
 
-  // const markdown = `
-  // # Heading 1
-
-  // Some text here.
-
-  // [name = Ewan]
-
-  // >疫情不去意晴不來
-  // > [name=匯吾]
-  // > > 今日最佳發言
-  // > > [name=櫛風]
-
-  // |時間|細流|
-  // |----|---|
-  // |6.00 |[歐陽組](#歐陽組)帶目標去吃飯飯|
-  // |6.00 |[佔位組](#佔位組)佔位置|
-  // |6.30|[蛋糕組](#蛋糕組)去拿蛋糕|
-  // |$X_{n}$|[歐陽組](#歐陽組)帶回來宿舍學餐，狀況不對（太吵被趕走、燈光不美氣氛不佳）的話回交誼廳（星星退隊）|
-  // |$X_{n+1}$|蛋糕閃亮亮登場|
-  // |$X_{n+2}$|[疫情組](#tip1)用【神奇道具】來遠端真情生日祝福|
-  // |$X_{n+3}$|各回各家各找各媽（雖然其實都是宿舍幫）|
-  // `;
   return (
     <div>
       <Header name={userData.login} />
       <Hero />
       <Content Issues={Issues} lastIssueElementRef={lastIssueElementRef} />
-      {/* <div dangerouslySetInnerHTML={{ __html: marked(markdown) }} /> */}
     </div>
   );
 }
