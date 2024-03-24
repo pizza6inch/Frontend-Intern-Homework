@@ -47,13 +47,19 @@ React.js 開發一個網頁,讓搜尋引擎更容易尋找到他在 GitHub Issue
 -----------
 ## 部屬方式
 環境:next.js
+
+```
 1.
 cd /server 
 npm start
+```
 
+
+```
 2.
-cd /Frontend
-npm run dev
+cd /Frontend 
+npm start
+```
 ---------------
 ## 作業架構
 我使用JavaScript + React + css並使用Git版本控制開發此專案
@@ -69,22 +75,25 @@ npm run dev
 並將Scope設為repo，使用戶能有操作API的權限
 
 ### Post Management
-權限控制非使用者無法進行Issue API的操作包含新增(Add)、刪除(Close)、修改(Edit/Update)。
-為了符合Cors Policy的要求，我另外建一個Experss Server(/Server/server.js)幫我轉送前端對Github API的請求
-新增、修改Issue時跳轉至新的頁面操作，參考了Github的頁面新的頁面可以Preview markdown內容
+
+- 額外建立 [Repo](https://github.com/pizza6inch/Github-Blog) 作為 GitHub Issue Blog
+- 權限控制非使用者無法進行Issue API的操作包含新增(Add)、刪除(Close)、修改(Edit/Update)。
+- 為了符合Cors Policy的要求，我另外建一個Experss Server(/Server/server.js)幫我轉送前端對Github API的請求
+- 新增、修改Issue時跳轉至新的頁面操作，參考了Github的頁面新的頁面可以Preview markdown內容
 
 ### Infinite scrolling
-使用useRef hook 在最後一筆Issue下面加入observer元件觀測使用者頁面是否出現該元件，也就是使用者滑到最下方
-如果發生則呼叫API回傳新的10筆Issue，並且將observer位置從原本的Issue改成新的10筆的最下方，就可以實作Infinite scrolling
+- 使用useRef hook 在最後一筆Issue下面加入observer元件觀測使用者頁面是否出現該元件，也就是使用者滑到最下方
+- 如果發生則呼叫API回傳新的10筆Issue，並且將observer位置從原本的Issue改成新的10筆的最下方，就可以實作Infinite scrolling
 
 ### MarkDown Rendering
-使用 react-markdown 套件，並且使用remarkGfm插件 render markdown內容
-問題:無法實作換行功能
+- 使用 react-markdown 套件，並且使用remarkGfm插件 render markdown內容
+- 問題:無法實作換行功能
 
 
 
 
 reminder:
+不同登入者權限控制
 整理css
 整理各個component的fetch
 部屬置線上環境
