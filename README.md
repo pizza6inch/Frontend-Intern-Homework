@@ -58,8 +58,9 @@ npm start
 ```
 2.
 cd /Frontend 
-npm start
+npm run dev
 ```
+開啟 http://localhost:5173/home
 ---------------
 ## 作業架構
 我使用JavaScript + React + css並使用Git版本控制開發此專案
@@ -93,8 +94,8 @@ npm start
 
 
 reminder:
-不同登入者權限控制
-整理css
-整理各個component的fetch
-部屬置線上環境
-改成typeScript
+- 不同登入者權限控制
+- 整理css
+- 整理各個component的fetch
+- 部屬置線上環境
+- JS改成TS
