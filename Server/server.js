@@ -138,15 +138,15 @@ app.get("/getIssueComments", async function (req, res) {
 
 app.post("/AddIssue", async function (req, res) {
   req.get("Authorization");
-  req.get("title");
   req.get("body");
-  const data = { title: req.get("title"), body: req.get("body") };
+  const data = req.get("body");
+  //console.log(data);
   await fetch("https://api.github.com/repos/pizza6inch/Github-Blog/issues", {
     method: "POST",
     headers: {
       Authorization: "Bearer " + req.get("Authorization"), // Bearer ACCESS_TOKEN
     },
-    body: JSON.stringify(data),
+    body: data,
   })
     .then((response) => {
       return response.json();

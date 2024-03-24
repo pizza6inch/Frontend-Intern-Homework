@@ -37,4 +37,11 @@
 
 .Content .Post-wrapper{
     width: 84%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Content .Post-wrapper .loading{
+    width: 100%;
+    text-align: center;
 }

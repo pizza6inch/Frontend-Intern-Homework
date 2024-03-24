@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import { marked } from "marked";
 import Header from "../component/Header/Header";
 import Hero from "../component/Hero/Hero";
 import Content from "../component/Content/Content";

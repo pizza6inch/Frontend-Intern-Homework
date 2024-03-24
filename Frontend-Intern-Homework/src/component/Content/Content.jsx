@@ -2,7 +2,6 @@ import PostPrev from "../PostPrev/PostPrev";
 import "./Content.css";
 import { useRef, useCallback, useState } from "react";
 function Content(props) {
-  const [IsOpen, setIsOpen] = useState(false);
   function AddIssue() {
     if (localStorage.getItem("accessToken") === null) {
       alert("You need to login first");
@@ -13,7 +12,9 @@ function Content(props) {
   }
 
   function getContent(Issues, lastIssueElementRef) {
-    if (Issues === undefined || Issues.length === 0) {
+    if (Issues[0] === undefined) {
+      return <div className="Content-Title">wait a moment...</div>;
+    } else if (Issues.length === 0) {
       return <div className="Content-Title">No Issue</div>;
     } else {
       return Issues.map((Issue, i) => {
@@ -22,10 +23,12 @@ function Content(props) {
             <div className="Post-wrapper" key={i}>
               <PostPrev IssueNumber={i} Issue={Issue}></PostPrev>
               <div
-                className="loading..."
+                className="loading"
                 key={"loading"}
                 ref={lastIssueElementRef}
-              ></div>
+              >
+                No more Issue...
+              </div>
             </div>
           );
         } else {

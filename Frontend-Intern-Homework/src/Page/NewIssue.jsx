@@ -22,9 +22,8 @@ function NewIssue() {
     await fetch("http://localhost:4000/AddIssue", {
       method: "POST",
       headers: {
-        Authorization: localStorage.getItem("accessToken"), // Authorization token
-        title: title, // getting title from input
-        body: description, // getting content from input
+        Authorization: localStorage.getItem("accessToken"),
+        body: JSON.stringify({ title, body: description }),
       },
     });
     window.location.href = "http://localhost:5173/home";
@@ -54,7 +53,7 @@ function NewIssue() {
         <div className="Description-Box">
           <div className="ViewButtonWrapper">
             <button type="button" onClick={() => handleTogglePreview("write")}>
-              Write
+              Edit
             </button>
             <button
               type="button"

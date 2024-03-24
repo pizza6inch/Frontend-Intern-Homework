@@ -92,7 +92,7 @@ function EditIssue() {
         <div className="Description-Box">
           <div className="ViewButtonWrapper">
             <button type="button" onClick={() => handleTogglePreview("write")}>
-              Write
+              Edit
             </button>
             <button
               type="button"
