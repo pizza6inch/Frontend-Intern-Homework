@@ -51,7 +51,41 @@ React.js 開發一個網頁,讓搜尋引擎更容易尋找到他在 GitHub Issue
 cd /server 
 npm start
 
-2.cd /Frontend
+2.
+cd /Frontend
 npm run dev
+---------------
+## 作業架構
+我使用JavaScript + React + css並使用Git版本控制開發此專案
+我使用app router 分頁，寫在App.jsx中，並將不同頁分類至 /Page
+其中較複雜的架構則拆分寫至 /Component，同時也將css檔獨立拆分，一個jsx檔對應一個css檔
 
 
+### UI介面
+其中Hero這個Component參考了figma上的範例，新增修改Issue的IssueForm參考了Github的Issue頁面，其他都是自己設計
+
+### OAuth
+參考了GitHub Issue documentation實作OAuth功能，其中使用local storage儲存用戶的access token，使用戶不需重複登入。
+並將Scope設為repo，使用戶能有操作API的權限
+
+### Post Management
+權限控制非使用者無法進行Issue API的操作包含新增(Add)、刪除(Close)、修改(Edit/Update)。
+為了符合Cors Policy的要求，我另外建一個Experss Server(/Server/server.js)幫我轉送前端對Github API的請求
+新增、修改Issue時跳轉至新的頁面操作，參考了Github的頁面新的頁面可以Preview markdown內容
+
+### Infinite scrolling
+使用useRef hook 在最後一筆Issue下面加入observer元件觀測使用者頁面是否出現該元件，也就是使用者滑到最下方
+如果發生則呼叫API回傳新的10筆Issue，並且將observer位置從原本的Issue改成新的10筆的最下方，就可以實作Infinite scrolling
+
+### MarkDown Rendering
+使用 react-markdown 套件，並且使用remarkGfm插件 render markdown內容
+問題:無法實作換行功能
+
+
+
+
+reminder:
+整理css
+整理各個component的fetch
+部屬置線上環境
+改成typeScript
