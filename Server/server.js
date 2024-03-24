@@ -70,7 +70,7 @@ app.get("/getIssues", async function (req, res) {
 
   //console.log(req.get("Authorization"));
   const params =
-    "?sort=created" +
+    "?sort=number" +
     "&direction=asc" +
     "&per_page=10" +
     "&page=" +
@@ -93,9 +93,29 @@ app.get("/getIssues", async function (req, res) {
     });
 });
 
+app.get("/getIssue", async function (req, res) {
+  await fetch(
+    "https://api.github.com/repos/pizza6inch/Github-Blog/issues/" +
+      req.get("number"),
+    {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + BLOG_ACCESS_TOKEN, // Bearer ACCESS_TOKEN
+      },
+    }
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      //console.log(data);
+      res.json(data);
+    });
+});
+
 app.get("/getIssueComments", async function (req, res) {
   req.get("number");
-  console.log(req.get("number"));
+  //console.log(req.get("number"));
   await fetch(
     "https://api.github.com/repos/pizza6inch/Github-Blog/issues/" +
       req.get("number") +
@@ -111,7 +131,7 @@ app.get("/getIssueComments", async function (req, res) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      //console.log(data);
       res.json(data);
     });
 });
@@ -140,9 +160,8 @@ app.post("/AddIssue", async function (req, res) {
 app.post("/updateIssue", async function (req, res) {
   req.get("Authorization");
   req.get("number");
-  req.get("title");
-  req.get("body");
-  const data = { title: req.get("title"), body: req.get("body") };
+  const issueData = req.get("body");
+  //console.log(issueData);
   await fetch(
     "https://api.github.com/repos/pizza6inch/Github-Blog/issues/" +
       req.get("number"),
@@ -151,7 +170,7 @@ app.post("/updateIssue", async function (req, res) {
       headers: {
         Authorization: "Bearer " + req.get("Authorization"), // Bearer ACCESS_TOKEN
       },
-      body: JSON.stringify(data),
+      body: issueData,
     }
   )
     .then((response) => {

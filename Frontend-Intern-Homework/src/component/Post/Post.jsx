@@ -1,7 +1,5 @@
 import "./Post.css";
 
-import EditModal from "../Modal/EditModal";
-import { marked } from "marked";
 import { useState, useEffect } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -9,12 +7,13 @@ import remarkGfm from "remark-gfm";
 function Post(props) {
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function openModal() {
+  function EditIssue() {
     if (localStorage.getItem("accessToken") === null) {
       alert("You need to login first");
       return;
     }
-    setIsOpen(true);
+    window.location.href =
+      "http://localhost:5173/editIssue?IssueNumber=" + props.issue.number;
   }
 
   async function closeIssue() {
@@ -45,14 +44,9 @@ function Post(props) {
                 <div className="Tag">#{props.issue.number}</div>
               </div>
               <div className="Button-wrapper">
-                <button className="Edit-Button" onClick={openModal}>
+                <button className="Edit-Button" onClick={EditIssue}>
                   Edit
                 </button>
-                <EditModal
-                  issue={props.issue}
-                  isOpen={modalIsOpen}
-                  setIsOpen={setIsOpen}
-                />
                 <button className="Delete-Button" onClick={closeIssue}>
                   Close issue
                 </button>

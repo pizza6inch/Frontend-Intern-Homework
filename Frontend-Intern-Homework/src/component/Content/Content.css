@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.Content .Title-wrapper{
+.Content .ContentTitle-wrapper{
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -13,7 +13,7 @@
     width: 84%;
 }
 
-.Content .Title-wrapper .Add-Button{
+.Content .ContentTitle-wrapper .Add-Button{
     width: 200px;
     height: 40px;
     margin-left: 20px;
@@ -25,7 +25,7 @@
     cursor: pointer;
 }
 
-.Content .Title-wrapper .Add-Button:hover{
+.Content .ContentTitle-wrapper .Add-Button:hover{
     background-color: #090d1f;
     color: #ffffff;
 }
