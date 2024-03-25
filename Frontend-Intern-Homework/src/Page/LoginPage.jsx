@@ -1,5 +1,3 @@
-import axios from "axios";
-import Hero from "../component/Hero/Hero";
 import Header from "../component/Header/Header";
 import "./LoginPage.css";
 import Icon from "../../public/github-mark.png";

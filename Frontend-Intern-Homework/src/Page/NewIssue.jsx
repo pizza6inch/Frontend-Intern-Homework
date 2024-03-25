@@ -9,8 +9,8 @@ function NewIssue() {
   const [showPreview, setShowPreview] = useState(false);
 
   async function handleSubmit() {
-    console.log("Title: ", title);
-    console.log("Description: ", description);
+    // console.log("Title: ", title);
+    // console.log("Description: ", description);
     if (title.length === 0) {
       alert("Title cannot be empty");
       return;

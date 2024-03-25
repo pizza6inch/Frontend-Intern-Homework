@@ -1,11 +1,9 @@
 import "./Post.css";
 
-import { useState, useEffect } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 function Post(props) {
-  const [modalIsOpen, setIsOpen] = useState(false);
 
   function EditIssue() {
     if (localStorage.getItem("accessToken") === null) {

@@ -12,7 +12,7 @@ function EditIssue() {
   const IssueNumber = new URLSearchParams(window.location.search).get(
     "IssueNumber"
   );
-  var called = false;
+  var called = false; //to prevent multiple calls to getIssue
   useEffect(() => {
     if (Issue === undefined && called === false) {
       getIssue(IssueNumber);
@@ -41,15 +41,15 @@ function EditIssue() {
   }
 
   async function handleSubmit() {
-    // if (title.length === 0) {
-    //   alert("Title cannot be empty");
-    //   return;
-    // }
-    // if (description.length < 30) {
-    //   alert("description cannot be less than 30 characters");
-    //   return;
-    // }
-    console.log(JSON.stringify({ title, body: description }));
+    if (title.length === 0) {
+      alert("Title cannot be empty");
+      return;
+    }
+    if (description.length < 30) {
+      alert("description cannot be less than 30 characters");
+      return;
+    }
+    //console.log(JSON.stringify({ title, body: description }));
     await fetch("http://localhost:4000/updateIssue", {
       method: "POST",
       headers: {
@@ -58,13 +58,8 @@ function EditIssue() {
         // Issue.number refers to the issue number
         body: JSON.stringify({ title, body: description }),
       },
-    }).then((response) => {
-      console.log(response);
-      if (response.status === 200) {
-        console.log("Issue updated");
-      }
     });
-    console.log("updateIssue");
+    //console.log("updateIssue");
     window.location.href = "http://localhost:5173/home";
   }
 

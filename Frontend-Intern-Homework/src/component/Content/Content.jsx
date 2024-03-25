@@ -1,13 +1,11 @@
 import PostPrev from "../PostPrev/PostPrev";
 import "./Content.css";
-import { useRef, useCallback, useState } from "react";
 function Content(props) {
   function AddIssue() {
     if (localStorage.getItem("accessToken") === null) {
       alert("You need to login first");
       return;
     }
-    //setIsOpen(true);
     window.location.href = "/newIssue";
   }
 
