@@ -7,8 +7,8 @@ var bodyParser = require("body-parser");
 const CLIENT_ID = "722ee22b46b4dbd64348";
 const CLIENT_SECRET = "382ffd241addfe7e68ea5dd9949b703a2ec93336";
 const BLOG_ACCESS_TOKEN =
-  "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";
-
+  "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";
+// need to be updated after Thu, Mar 27 2025. after that, the token will be invalid
 var app = express();
 
 app.use(cors());

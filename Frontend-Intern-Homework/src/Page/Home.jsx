@@ -92,8 +92,8 @@ function Home() {
         return response.json();
       })
       .then((data) => {
-        setIssues((prevIssues) => [...prevIssues, ...data]);
-        console.log(data);
+        setIssues((prevIssues) => [...prevIssues, ...data]); // append data when scrolling
+        //console.log(data);
       });
   }
 
