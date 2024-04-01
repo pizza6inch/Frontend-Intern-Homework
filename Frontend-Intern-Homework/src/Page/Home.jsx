@@ -5,7 +5,7 @@ import Content from "../component/Content/Content";
 import "../App.css";
 
 function Home() {
-  const baseUrl = process.env.PUBLIC_URL || "http://localhost:3000";
+  const baseUrl = process.env.PUBLIC_URL;
   const [rerender, setRerender] = useState(false);
   const [userData, setUserData] = useState({ login: "Guest" });
   const [Issues, setIssues] = useState([]);
