@@ -4,10 +4,9 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 function Post(props) {
-
   function EditIssue() {
-    if (localStorage.getItem("accessToken") === null) {
-      alert("You need to login first");
+    if (props.issue.author_association !== "OWNER") {
+      alert("Permission Denied : You are not the author of this issue.");
       return;
     }
     window.location.href =

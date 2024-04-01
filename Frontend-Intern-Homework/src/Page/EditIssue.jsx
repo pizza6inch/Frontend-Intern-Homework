@@ -29,6 +29,7 @@ function EditIssue() {
       method: "GET",
       headers: {
         number: IssueNumber,
+        Authorization: localStorage.getItem("accessToken"),
       },
     })
       .then((response) => {

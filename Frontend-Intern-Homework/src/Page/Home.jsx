@@ -6,95 +6,79 @@ import "../App.css";
 
 function Home() {
   const [rerender, setRerender] = useState(false);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({ login: "Guest" });
   const [Issues, setIssues] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(0);
-
+  const [page, setPage] = useState(1);
+  const code = new URLSearchParams(window.location.search).get("code");
   useEffect(() => {
     setLoading(true);
-    const code = new URLSearchParams(window.location.search).get("code");
-    if (localStorage.getItem("accessToken") === null && code !== null) {
-      getAccessToken(code);
-    }
-    if (
-      (userData.login === undefined || userData.login === "Guest") &&
-      localStorage.getItem("accessToken")
-    ) {
-      getUserData();
-      // console.log("getUserData");
-    }
-    if (
-      userData.login === undefined &&
-      localStorage.getItem("accessToken") === null
-    ) {
-      setUserData({ login: "Guest" });
-      // console.log("Guest");
-    }
-    if (Issues.length === 0) {
-      setPage(1);
-      // console.log("setPage1");
-    }
-    // console.log("rerender");
+    getAccessToken(code);
+    getUserData();
     setLoading(false);
+    console.log(userData);
   }, [rerender]);
 
   useEffect(() => {
-    if (page !== 0) {
-      getIssues(page); //calling API
-      // if (page === 1) {
-      //   setRerender(!rerender);
-      // }
-    }
-  }, [page]);
+    getIssues(page);
+  }, [page, rerender]);
 
   async function getAccessToken(code) {
-    await fetch("http://localhost:4000/getAccessToken?code=" + code, {
-      method: "GET",
-    })
-      .then((response) => {
-        return response.json();
+    if (localStorage.getItem("accessToken") === null && code !== null) {
+      await fetch("http://localhost:4000/getAccessToken?code=" + code, {
+        method: "GET",
       })
-      .then((data) => {
-        if (data.access_token) {
-          localStorage.setItem("accessToken", data.access_token);
-          setRerender(!rerender);
-          //console.log(data);
-        }
-      });
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          if (data.access_token) {
+            localStorage.setItem("accessToken", data.access_token);
+            setRerender(!rerender);
+            //console.log(data);
+          }
+        });
+    }
   }
 
   async function getUserData() {
-    await fetch("http://localhost:4000/getUserData", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("accessToken"),
-      },
-    })
-      .then((response) => {
-        return response.json();
+    if (userData.login === "Guest" && localStorage.getItem("accessToken")) {
+      await fetch("http://localhost:4000/getUserData", {
+        method: "GET",
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+        },
       })
-      .then((data) => {
-        setUserData(data);
-        setRerender(!rerender);
-        //console.log(data);
-      });
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          setUserData(data);
+          setRerender(!rerender);
+          //console.log(data);
+        });
+    }
   }
 
   async function getIssues(page) {
-    await fetch("http://localhost:4000/getIssues", {
-      method: "GET",
-      headers: {
-        page: page,
-      },
-    })
-      .then((response) => {
-        return response.json();
+    if (localStorage.getItem("accessToken")) {
+      await fetch("http://localhost:4000/getIssues", {
+        method: "GET",
+        headers: {
+          page: page,
+          Authorization: localStorage.getItem("accessToken"),
+        },
       })
-      .then((data) => {
-        setIssues((prevIssues) => [...prevIssues, ...data]); // append data when scrolling
-        //console.log(data);
-      });
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          if (page === 1)
+            setIssues(data); // set data when page is 1 (initial load
+          else setIssues((prevIssues) => [...prevIssues, ...data]); // append data when scrolling
+          console.log(data);
+        });
+    }
   }
 
   const observer = useRef();
@@ -116,7 +100,11 @@ function Home() {
     <div>
       <Header name={userData.login} />
       <Hero />
-      <Content Issues={Issues} lastIssueElementRef={lastIssueElementRef} />
+      <Content
+        Issues={Issues}
+        name={userData.login}
+        lastIssueElementRef={lastIssueElementRef}
+      />
     </div>
   );
 }

@@ -9,8 +9,10 @@ function Content(props) {
     window.location.href = "/newIssue";
   }
 
-  function getContent(Issues, lastIssueElementRef) {
-    if (Issues[0] === undefined) {
+  function getContent(Issues, Name, lastIssueElementRef) {
+    if (Name === "Guest") {
+      return <div className="Content-Title">Please Login</div>;
+    } else if (Issues[0] === undefined) {
       return <div className="Content-Title">wait a moment...</div>;
     } else if (Issues.length === 0) {
       return <div className="Content-Title">No Issue</div>;
@@ -47,7 +49,7 @@ function Content(props) {
           New Issue
         </button>
       </div>
-      {getContent(props.Issues, props.lastIssueElementRef)}
+      {getContent(props.Issues, props.name, props.lastIssueElementRef)}
     </div>
   );
 }

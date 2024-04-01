@@ -36,7 +36,7 @@ function PostPage() {
     await fetch("http://localhost:4000/getUserData", {
       method: "GET",
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        Authorization: localStorage.getItem("accessToken"),
       },
     })
       .then((response) => {
@@ -55,6 +55,7 @@ function PostPage() {
       method: "GET",
       headers: {
         number: IssueNumber,
+        Authorization: localStorage.getItem("accessToken"),
       },
     })
       .then((response) => {
@@ -73,6 +74,7 @@ function PostPage() {
       method: "GET",
       headers: {
         number: IssueNumber,
+        Authorization: localStorage.getItem("accessToken"),
       },
     })
       .then((response) => {
@@ -87,7 +89,7 @@ function PostPage() {
   return (
     <div className="PostPage">
       <Header name={userData.login} />
-      <Post issue={Issue} />
+      <Post issue={Issue} userData={userData} />
       <Comment comments={Comments} />
     </div>
   );
