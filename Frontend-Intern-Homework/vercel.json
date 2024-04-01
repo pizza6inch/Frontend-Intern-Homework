@@ -11,5 +11,8 @@
         "src": "/",
         "dest": "server/index.js"
       }
-    ]
+    ],
+    "env": {
+        "PUBLIC_URL": "https://github-blog-ten-coral.vercel.app"
+    }
   }

@@ -5,7 +5,7 @@ import Content from "../component/Content/Content";
 import "../App.css";
 
 function Home() {
-  const baseUrl = process.env.PUBLIC_URL;
+  const baseUrl = process.env.PUBLIC_URL || "http://localhost:5173";
   const [rerender, setRerender] = useState(false);
   const [userData, setUserData] = useState({ login: "Guest" });
   const [Issues, setIssues] = useState([]);
@@ -26,7 +26,7 @@ function Home() {
 
   async function getAccessToken(code) {
     if (localStorage.getItem("accessToken") === null && code !== null) {
-      await fetch("http://localhost:4000/getAccessToken?code=" + code, {
+      await fetch(baseUrl + "/getAccessToken?code=" + code, {
         method: "GET",
       })
         .then((response) => {
@@ -44,7 +44,7 @@ function Home() {
 
   async function getUserData() {
     if (userData.login === "Guest" && localStorage.getItem("accessToken")) {
-      await fetch("http://localhost:4000/getUserData", {
+      await fetch(baseUrl + "/getUserData", {
         method: "GET",
         headers: {
           Authorization: localStorage.getItem("accessToken"),
@@ -63,7 +63,7 @@ function Home() {
 
   async function getIssues(page) {
     if (localStorage.getItem("accessToken")) {
-      await fetch("http://localhost:4000/getIssues", {
+      await fetch(baseUrl + "/getIssues", {
         method: "GET",
         headers: {
           page: page,
@@ -99,7 +99,6 @@ function Home() {
 
   return (
     <div>
-      歡迎使用{baseUrl}!
       <Header name={userData.login} />
       <Hero />
       <Content
