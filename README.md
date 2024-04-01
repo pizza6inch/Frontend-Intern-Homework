@@ -108,7 +108,7 @@ npm run dev
 reminder:
 
 - header 自己 call API
-- 不同登入者權限控制
+- 不同登入者權限控制需要測試
 - 整理 css
 - 整理各個 component 的 fetch
 - 部屬置線上環境
