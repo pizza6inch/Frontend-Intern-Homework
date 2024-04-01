@@ -5,6 +5,7 @@ import Content from "../component/Content/Content";
 import "../App.css";
 
 function Home() {
+  const baseUrl = process.env.PUBLIC_URL || "http://localhost:3000";
   const [rerender, setRerender] = useState(false);
   const [userData, setUserData] = useState({ login: "Guest" });
   const [Issues, setIssues] = useState([]);
@@ -98,6 +99,7 @@ function Home() {
 
   return (
     <div>
+      歡迎使用{baseUrl}!
       <Header name={userData.login} />
       <Hero />
       <Content
