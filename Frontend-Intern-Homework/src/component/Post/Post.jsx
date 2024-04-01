@@ -25,7 +25,7 @@ function Post(props) {
         number: props.issue.number,
       },
     });
-    window.location.href = "http://localhost:5173/home";
+    window.location.href = "http://localhost:5173";
   }
 
   if (props.issue === undefined) {

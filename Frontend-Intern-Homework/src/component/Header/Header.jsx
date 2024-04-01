@@ -5,12 +5,12 @@ function Headers(props) {
       window.location.href = "http://localhost:5173/login";
     } else {
       localStorage.removeItem("accessToken");
-      window.location.href = "http://localhost:5173/home";
+      window.location.href = "http://localhost:5173";
     }
   }
 
   async function goHome() {
-    window.location.href = "http://localhost:5173/home";
+    window.location.href = "http://localhost:5173";
   }
   return (
     <div className="Header">

@@ -26,7 +26,7 @@ function NewIssue() {
         body: JSON.stringify({ title, body: description }),
       },
     });
-    window.location.href = "http://localhost:5173/home";
+    window.location.href = "http://localhost:5173";
   }
 
   function handleTogglePreview(status) {
@@ -82,7 +82,7 @@ function NewIssue() {
           <button
             className="Cancel-Button"
             onClick={() => {
-              window.location.href = "http://localhost:5173/home";
+              window.location.href = "http://localhost:5173";
             }}
           >
             Cancel

@@ -61,7 +61,7 @@ function EditIssue() {
       },
     });
     //console.log("updateIssue");
-    window.location.href = "http://localhost:5173/home";
+    window.location.href = "http://localhost:5173";
   }
 
   function handleTogglePreview(status) {
@@ -117,7 +117,7 @@ function EditIssue() {
           <button
             className="Cancel-Button"
             onClick={() => {
-              window.location.href = "http://localhost:5173/home";
+              window.location.href = "http://localhost:5173";
             }}
           >
             Cancel
