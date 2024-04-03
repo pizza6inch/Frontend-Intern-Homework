@@ -9,23 +9,22 @@ function Content(props) {
     window.location.href = "/newIssue";
   }
 
-  function getContent(Issues, Name, lastIssueElementRef) {
-    if (Name === "Guest") {
-      return <div className="Content-Title">Please Login</div>;
-    } else if (Issues[0] === undefined) {
+  function getContent(Issues, lastIssueElementRef) {
+    if (Issues[0] === undefined) {
       return <div className="Content-Title">wait a moment...</div>;
     } else if (Issues.length === 0) {
       return <div className="Content-Title">No Issue</div>;
     } else {
       return Issues.map((Issue, i) => {
         if (Issues.length === i + 1) {
+          // detect the last issue
           return (
             <div className="Post-wrapper" key={i}>
               <PostPrev IssueNumber={i} Issue={Issue}></PostPrev>
               <div
                 className="loading"
                 key={"loading"}
-                ref={lastIssueElementRef}
+                ref={lastIssueElementRef} // set a loading div behind last issue element to observer
               >
                 No more Issue...
               </div>
@@ -49,7 +48,7 @@ function Content(props) {
           New Issue
         </button>
       </div>
-      {getContent(props.Issues, props.name, props.lastIssueElementRef)}
+      {getContent(props.Issues, props.lastIssueElementRef)}
     </div>
   );
 }

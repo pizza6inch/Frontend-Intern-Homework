@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./IssueForm.css";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { addIssue } from "../api";
 
 function NewIssue() {
   const [title, setTitle] = useState("");
@@ -19,14 +20,9 @@ function NewIssue() {
       alert("description cannot be less than 30 characters");
       return;
     }
-    await fetch("http://localhost:4000/AddIssue", {
-      method: "POST",
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-        body: JSON.stringify({ title, body: description }),
-      },
+    addIssue(title, description).then((data) => {
+      if (data) window.location.href = window.location.origin;
     });
-    window.location.href = "http://localhost:5173";
   }
 
   function handleTogglePreview(status) {
@@ -82,7 +78,7 @@ function NewIssue() {
           <button
             className="Cancel-Button"
             onClick={() => {
-              window.location.href = "http://localhost:5173";
+              window.location.href = window.location.origin;
             }}
           >
             Cancel

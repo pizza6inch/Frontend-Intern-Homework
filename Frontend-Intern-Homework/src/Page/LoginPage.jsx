@@ -4,7 +4,7 @@ import Icon from "../../public/github-mark.png";
 function LoginPage() {
   function redirectToOAuth() {
     const clientId = "722ee22b46b4dbd64348";
-    const redirectUri = "http://localhost:5173/home";
+    const redirectUri = window.location.origin;
     const clientSecret = "382ffd241addfe7e68ea5dd9949b703a2ec93336";
     const authURL = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=repo`;
     window.location.href = authURL;

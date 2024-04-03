@@ -2,89 +2,40 @@ import React, { useState, useEffect } from "react";
 import Header from "../component/Header/Header";
 import Post from "../component/Post/Post";
 import Comment from "../component/Comment/Comment";
+import { fetchUserData, fetchIssue, fetchIssues, fetchComment } from "../api";
 
 function PostPage() {
   const [Issue, setIssue] = useState(undefined);
-
-  const [userData, setUserData] = useState([]);
-
-  const [rerender, setRerender] = useState(false);
+  const [userData, setUserData] = useState({ login: "Guest" });
   const [Comments, setComments] = useState([undefined]);
-  var called = false;
   const IssueNumber = new URLSearchParams(window.location.search).get(
     "IssueNumber"
   );
 
   useEffect(() => {
     if (localStorage.getItem("accessToken") !== null) {
-      getUserData();
+      fetchUserData().then((data) => {
+        if (data) setUserData(data);
+      });
     } else {
-      setUserData({ login: "Guest" });
+      prompt("Please login first");
+      window.location.href = window.location.origin + "/login";
     }
+  }, []);
 
-    if (Issue === undefined && called === false) {
-      called = true;
-      getIssue(IssueNumber);
-      getComments(IssueNumber);
-      //console.log("getIssues");
+  useEffect(() => {
+    if (localStorage.getItem("accessToken") !== null) {
+      fetchIssue(IssueNumber).then((data) => {
+        if (data) setIssue(data);
+      });
+      fetchComment(IssueNumber).then((data) => {
+        if (data) setComments(data);
+      });
+    } else {
+      prompt("Please login first");
+      window.location.href = window.location.origin + "/login";
     }
-    // console.log(Issue);
-    //console.log(Comments);
-  }, [rerender]);
-
-  async function getUserData() {
-    await fetch("http://localhost:4000/getUserData", {
-      method: "GET",
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setUserData(data);
-        //setRerender(!rerender); // Uncomment this line if you want to re-render the component after fetching user data
-        //console.log(data);
-      });
-  }
-
-  // Fetch issue data from the server
-  async function getIssue(IssueNumber) {
-    await fetch("http://localhost:4000/getIssue/", {
-      method: "GET",
-      headers: {
-        number: IssueNumber,
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setIssue(data);
-        setRerender(!rerender);
-        //console.log(data);
-      });
-  }
-
-  async function getComments(IssueNumber) {
-    //console.log(Issue.number);
-    await fetch("http://localhost:4000/getIssueComments", {
-      method: "GET",
-      headers: {
-        number: IssueNumber,
-        Authorization: localStorage.getItem("accessToken"),
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setComments(data);
-        //console.log(data);
-      });
-  }
+  }, []);
 
   return (
     <div className="PostPage">

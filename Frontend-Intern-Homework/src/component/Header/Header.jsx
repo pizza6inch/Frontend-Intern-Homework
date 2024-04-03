@@ -2,15 +2,15 @@ import "./Header.css";
 function Headers(props) {
   async function log() {
     if (props.name === "Guest") {
-      window.location.href = "http://localhost:5173/login";
+      window.location.href = window.location.origin + "/login";
     } else {
       localStorage.removeItem("accessToken");
-      window.location.href = "http://localhost:5173";
+      window.location.href = window.location.origin;
     }
   }
 
   async function goHome() {
-    window.location.href = "http://localhost:5173";
+    window.location.href = window.location.origin;
   }
   return (
     <div className="Header">

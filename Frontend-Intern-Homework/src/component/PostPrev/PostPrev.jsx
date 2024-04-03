@@ -6,7 +6,7 @@ import remarkGfm from "remark-gfm";
 function PostPrev(props) {
   function clickPost(IssueNumber) {
     window.location.href =
-      "http://localhost:5173/post?IssueNumber=" + IssueNumber;
+      window.location.origin + "/post?IssueNumber=" + IssueNumber;
   }
 
   return (

@@ -3,6 +3,8 @@ import "./Post.css";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+import { closeIssue } from "../../api";
+
 function Post(props) {
   function EditIssue() {
     if (props.issue.author_association !== "OWNER") {
@@ -10,22 +12,17 @@ function Post(props) {
       return;
     }
     window.location.href =
-      "http://localhost:5173/editIssue?IssueNumber=" + props.issue.number;
+      window.location.origin + "editIssue?IssueNumber=" + props.issue.number;
   }
 
-  async function closeIssue() {
-    if (localStorage.getItem("accessToken") === null) {
-      alert("You need to login first");
+  async function handleClose() {
+    if (props.issue.author_association !== "OWNER") {
+      alert("Permission Denied : You are not the author of this issue.");
       return;
     }
-    await fetch("http://localhost:4000/closeIssue", {
-      method: "POST",
-      headers: {
-        Authorization: localStorage.getItem("accessToken"),
-        number: props.issue.number,
-      },
+    closeIssue(props.issue.number).then((data) => {
+      if (data) window.location.href = window.location.origin;
     });
-    window.location.href = "http://localhost:5173";
   }
 
   if (props.issue === undefined) {
@@ -44,7 +41,7 @@ function Post(props) {
                 <button className="Edit-Button" onClick={EditIssue}>
                   Edit
                 </button>
-                <button className="Delete-Button" onClick={closeIssue}>
+                <button className="Delete-Button" onClick={handleClose}>
                   Close issue
                 </button>
               </div>

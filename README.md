@@ -107,6 +107,7 @@ npm run dev
 
 reminder:
 
+- api 分裝，serverURL 抓取
 - header 自己 call API
 - 不同登入者權限控制需要測試
 - 整理 css
