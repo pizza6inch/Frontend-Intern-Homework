@@ -107,12 +107,12 @@ npm run dev
 
 reminder:
 
-- api 分裝，serverURL 抓取
-- header 自己 call API
-- 不同登入者權限控制需要測試
-- 整理 css
-- 整理各個 component 的 fetch
-- 部屬置線上環境
-- JS 改成 TS
-- 調校 Web Vitals 評分
-- 有處理錯誤及例外狀況 (Error Handling)
+- [x] api 分裝，serverURL 抓取
+- [x] header 自己 call API ok
+- [ ] 不同登入者權限控制需要測試 
+- [ ] 整理 css
+- [x] 整理各個 component 的 fetch ok
+- [] 部屬置線上環境
+- [ ] JS 改成 TS
+- [ ] 調校 Web Vitals 評分
+- [ ] 有處理錯誤及例外狀況 (Error Handling)
