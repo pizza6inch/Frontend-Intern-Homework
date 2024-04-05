@@ -22,6 +22,7 @@ function Home() {
         }
       });
     }
+    console.log(window.location.origin);
   }, []);
 
   useEffect(() => {

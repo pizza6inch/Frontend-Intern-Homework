@@ -1,6 +1,6 @@
 // api.js
 
-const serverURL = "http://localhost:4000";
+const serverURL = "/api";
 //const baseURL = Window.location.origin;
 export async function fetchAccessToken(code) {
   const response = await fetch(`${serverURL}/getAccessToken?code=${code}`, {
