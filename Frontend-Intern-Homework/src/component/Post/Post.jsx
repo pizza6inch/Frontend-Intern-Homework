@@ -12,7 +12,7 @@ function Post(props) {
       return;
     }
     window.location.href =
-      window.location.origin + "editIssue?IssueNumber=" + props.issue.number;
+      window.location.origin + "/editIssue?IssueNumber=" + props.issue.number;
   }
 
   async function handleClose() {

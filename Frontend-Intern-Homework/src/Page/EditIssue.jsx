@@ -37,9 +37,7 @@ function EditIssue() {
       return;
     }
     updateIssue(title, description, IssueNumber).then((data) => {
-      if (data)
-        window.location.href =
-          window.location.origin + "/Issue?IssueNumber=" + IssueNumber;
+      if (data) window.location.href = window.location.origin;
     });
   }
 
@@ -96,8 +94,7 @@ function EditIssue() {
           <button
             className="Cancel-Button"
             onClick={() => {
-              window.location.href =
-                window.location.origin + "/Issue?IssueNumber=" + IssueNumber;
+              window.location.href = window.location.origin;
             }}
           >
             Cancel

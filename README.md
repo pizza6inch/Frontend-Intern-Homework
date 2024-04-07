@@ -71,7 +71,7 @@ cd /Frontend
 npm run dev
 ```
 
-## 開啟 http://localhost:5173/home
+## 開啟 http://localhost:5173
 
 ## 作業架構
 
@@ -109,7 +109,7 @@ reminder:
 
 - [x] api 分裝，serverURL 抓取
 - [x] header 自己 call API ok
-- [ ] 不同登入者權限控制需要測試 
+- [ ] 不同登入者權限控制需要測試
 - [ ] 整理 css
 - [x] 整理各個 component 的 fetch ok
 - [] 部屬置線上環境
