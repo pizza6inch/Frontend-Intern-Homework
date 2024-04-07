@@ -4,7 +4,7 @@ import Hero from "../component/Hero/Hero";
 import Content from "../component/Content/Content";
 import "../App.css";
 import { fetchAccessToken, fetchUserData, fetchIssues } from "../api";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Home() {
   const [rerender, setRerender] = useState(false);
@@ -65,7 +65,6 @@ function Home() {
       <Header name={userData.login} />
       <Hero />
       <Content Issues={Issues} lastIssueElementRef={lastIssueElementRef} />
-      <Link to="/login">Go to Login Page</Link>
     </div>
   );
 }

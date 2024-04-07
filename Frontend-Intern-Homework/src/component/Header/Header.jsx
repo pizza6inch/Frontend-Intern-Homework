@@ -1,16 +1,18 @@
 import "./Header.css";
+import { useHistory } from "react-router-dom";
 function Headers(props) {
+  const history = useHistory();
   async function log() {
     if (props.name === "Guest") {
-      window.location.href = window.location.origin + "/login";
+      history.push("/login");
     } else {
       localStorage.removeItem("accessToken");
-      window.location.href = window.location.origin;
+      history.push("/login");
     }
   }
 
   async function goHome() {
-    window.location.href = window.location.origin;
+    history.push("/login");
   }
   return (
     <div className="Header">
