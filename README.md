@@ -57,7 +57,7 @@ React.js 開發一個網頁,讓搜尋引擎更容易尋找到他在 GitHub Issue
 
 ## 部屬方式
 
-環境:next.js
+環境:vite
 
 ```
 1.
@@ -67,7 +67,7 @@ npm start
 
 ```
 2.
-cd /Frontend
+cd /Frontend-Intern-Homework
 npm run dev
 ```
 
